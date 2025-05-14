@@ -19,3 +19,6 @@ dirs = "6.0.0"
 default = []                # tiny binary by default
 clipboard = ["dep:arboard"] # enable with `--features clipboard`
 qr        = ["dep:qrcodegen"]
+
+[lib]
+path = "src/lib.rs"
