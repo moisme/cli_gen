@@ -49,6 +49,10 @@ Optional Feature: Clipboard copy only:
 
     cargo run --release --features clipboard -- --secret /tmp/demo-secret --copy
 
+pbpaste   --> macOS
+
+xclip -o  --> Linux
+
 Optional: clipboard copy + QR rendering
 
     cargo run --features "clipboard qr" -- --secret /tmp/demo-secret --qr
