@@ -79,6 +79,6 @@ fn main() -> anyhow::Result<()> {
     }
 
     // ── 5. Always print the code last
-    println!("{code}");
+    println!("Here is your One-Time Passcode: {code}");
     Ok(())
 }
