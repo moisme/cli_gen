@@ -27,13 +27,25 @@ Feature flags
 
 ***Quick start***
 
+Create a temporary "secret" file using 
+
+    echo 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ' > /tmp/demo-secret
+- This Base-32 string is the RFC 6238 test secret for
+"12345678901234567890" .
+
+
 Clone & build 
 
 git clone …/cli_gen && cd cli_gen
-cargo run --release -- # reads ~/.totp-secret and prints the code
+
+Run by Default (No Extra Features) - This will just print out the 6-digit One Time Password
+    
+    cargo run -- --secret /tmp/demo-secret
+
+e.g. prints: 287082   (value changes every 30 s)
 
 
-Optional: Clipboard copy only: 
+Optional Feature: Clipboard copy only: 
 
     cargo run --release --features clipboard -- --secret /tmp/demo-secret --copy
 
