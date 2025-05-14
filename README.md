@@ -54,5 +54,9 @@ Running the tests
 $ cargo test
 The included integration test uses the official RFC 6238 seed to assert that the current_totp() function returns a 6‑digit string.
 
+Here is an example output with the secret code at the bottom, ability to paste the code as it is copied to your clipboard and the QR code on top 
+
+<img width="769" alt="Screenshot 2025-05-14 at 04 29 02" src="https://github.com/user-attachments/assets/0ca64ee8-0026-4f0d-be1f-a7f29c922f86" />
+
 
 
