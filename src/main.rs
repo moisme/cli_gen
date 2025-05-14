@@ -29,16 +29,16 @@ struct Cli {
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
 
-    // ── 1. Read secret ────────────────────────────────────────────────────
+    // ── 1. Read secret
     let path = cli
         .secret
         .unwrap_or(dirs::home_dir().unwrap().join(".totp-secret"));
     let secret = fs::read_to_string(path)?;
 
-    // ── 2. Compute the code ───────────────────────────────────────────────
+    // ── 2. Compute the code
     let code = current_totp(&secret)?;
 
-    // ── 3. Optional clipboard copy ────────────────────────────────────────
+    // ── 3. Optional clipboard copy 
     if cli.copy {
         #[cfg(feature = "clipboard")]
         {
@@ -49,7 +49,7 @@ fn main() -> anyhow::Result<()> {
         eprintln!("recompile with --features clipboard for this flag");
     }
 
-    // ── 4. Optional ASCII QR output ───────────────────────────────────────
+    // ── 4. Optional ASCII QR output
     if cli.qr {
         #[cfg(feature = "qr")]
         {
@@ -77,7 +77,7 @@ fn main() -> anyhow::Result<()> {
         eprintln!("recompile with --features qr for this flag");
     }
 
-    // ── 5. Always print the code last ─────────────────────────────────────
+    // ── 5. Always print the code last
     println!("{code}");
     Ok(())
 }
