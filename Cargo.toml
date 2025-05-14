@@ -9,7 +9,7 @@ totp-rs = "5.7.0"
 chrono = "0.4.0"
 base32 = "0.4"
 clap = { version = "4.5", features = ["derive"]}
-#clipboard suuport
+#clipboard support
 arboard = { version = "3.5.0", optional = true}
 #QR code output
 qrcodegen = { version = "1.5.0", optional = true}

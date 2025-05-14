@@ -33,6 +33,7 @@ fn main() -> anyhow::Result<()> {
     let path = cli
         .secret
         .unwrap_or(dirs::home_dir().unwrap().join(".totp-secret"));
+    
     let secret = fs::read_to_string(path)?;
 
     // ── 2. Compute the code
