@@ -1,8 +1,7 @@
-mod library;
+use cli_gen::current_totp;
 
 use clap::{Parser, Subcommand};
 use std::{fs, path::PathBuf};
-use crate::library::current_totp;
 
 #[derive(Parser)]
 #[command(author, version)]
