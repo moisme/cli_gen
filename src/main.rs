@@ -1,6 +1,6 @@
 use cli_gen::current_totp;
 
-use clap::{Parser, Subcommand};
+use clap::{Parser};
 use std::{fs, path::PathBuf};
 
 #[derive(Parser)]
@@ -49,7 +49,21 @@ fn main() -> anyhow::Result<()> {
             use qrcodegen::{QrCode, QrCodeEcc};
             let uri = format!("otpauth://totp/rust?secret={secret}");
             let qr = QrCode::encode_text(&uri, QrCodeEcc::Low)?;
-            println!("{}", qr.to_string(true, 2)); // ASCII art
+            let border: i32 = 2;
+            let size       = qr.size();
+            for y in -border..size + border {
+                let mut line = String::new();
+                for x in -border..size + border {
+                    let filled = if x < 0 || y < 0 || x >= size || y >= size {
+                        false                     // outer white border
+                    } else {
+                        qr.get_module(x, y)       // true = dark
+                    };
+                    line.push_str(if filled { "██" } else { "  " });
+                }
+                println!("{line}");
+            }
+            // ----------------------
         }
         #[cfg(not(feature = "qr"))]
         eprintln!("recompile with --features qr for this flag");

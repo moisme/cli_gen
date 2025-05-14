@@ -1,5 +1,4 @@
-use chrono::Utc; //This imports the Utc time source
-use totp_rs::{Algorithm, Secret, TOTP};
+use totp_rs::{Algorithm, TOTP};
 use base32::Alphabet::RFC4648;
 
 
